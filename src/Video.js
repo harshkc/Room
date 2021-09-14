@@ -6,7 +6,7 @@ const Video = ({ tracks, user }) => {
   const [gridSpacing, setGridSpacing] = useState(12);
 
   useEffect(() => {
-    setGridSpacing(Math.max(Math.floor(12 / user.length + 1), 4));
+    setGridSpacing(Math.max(Math.floor(12 / (user.length + 1)), 4));
   }, [tracks, user]);
 
   return (
