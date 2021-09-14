@@ -29,7 +29,7 @@ const VideoCall = ({ setIncall }) => {
           user.audioTrack.play();
         }
       });
-      client.on("user-unpublished", async (user, mediaType) => {
+      client.on("user-unpublished", (user, mediaType) => {
         if (mediaType === "video") {
           setUser((prevUsers) => {
             return prevUsers.filter((u) => u.uid !== user.uid);
@@ -39,7 +39,7 @@ const VideoCall = ({ setIncall }) => {
         }
       });
 
-      client.on("user-left", async (user) => {
+      client.on("user-left", (user) => {
         setUser((prevUsers) => {
           return prevUsers.filter((u) => u.uid !== user.uid);
         });
