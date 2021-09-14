@@ -5,11 +5,17 @@ import VideoCall from "./VideoCall";
 function App() {
   const [isVideoCall, setIsVideoCall] = useState(false);
   return (
-    <div className="App">
+    <div className="App" style={{ height: "100%" }}>
       {isVideoCall ? (
-        <VideoCall />
+        <VideoCall setIncall={setIsVideoCall} />
       ) : (
-        <Button color="primary" onClick={() => setIsVideoCall(true)}></Button>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => setIsVideoCall(true)}
+        >
+          Join call
+        </Button>
       )}
     </div>
   );

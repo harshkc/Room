@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Grid } from "@material-ui/core/Grid";
+import { Grid } from "@material-ui/core";
 
 import {
   useMicrophoneAndCameraTracks,
@@ -11,8 +11,7 @@ import {
 import Controls from "./Controls";
 import Video from "./Video";
 
-const VideoCall = (props) => {
-  const { setIncall } = props;
+const VideoCall = ({ setIncall }) => {
   const [user, setUser] = useState([]);
   const [start, setStart] = useState(false);
   const client = useClient();
@@ -33,16 +32,16 @@ const VideoCall = (props) => {
       client.on("user-unpublished", async (user, mediaType) => {
         if (mediaType === "video") {
           setUser((prevUsers) => {
-            return prevUsers.filter((u) => u.id !== user.id);
+            return prevUsers.filter((u) => u.uid !== user.uid);
           });
         } else {
-          user.audioTrack.stop();
+          if (user.audioTrack) user.audioTrack.stop();
         }
       });
 
       client.on("user-left", async (user) => {
         setUser((prevUsers) => {
-          return prevUsers.filter((u) => u.id !== user.id);
+          return prevUsers.filter((u) => u.uid !== user.uid);
         });
       });
 
@@ -73,7 +72,7 @@ const VideoCall = (props) => {
         )}
       </Grid>
       <Grid item style={{ height: "95%" }}>
-        {start && tracks && <Video tracks={tracks} users={user} />}
+        {start && tracks && <Video tracks={tracks} user={user} />}
       </Grid>
     </Grid>
   );

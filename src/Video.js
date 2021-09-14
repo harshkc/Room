@@ -19,13 +19,16 @@ const Video = ({ tracks, user }) => {
       </Grid>
       {user.length > 0 &&
         user.map((user) => {
-          if (user.track) {
+          if (user.videoTrack) {
             return (
               <Grid item xs={gridSpacing}>
                 <AgoraVideoPlayer
                   key={user.uid}
-                  style={{ height: "100", width: "100" }}
-                  videoTrack={user.track}
+                  style={{
+                    height: "100",
+                    width: "100",
+                  }}
+                  videoTrack={user.videoTrack}
                 />
               </Grid>
             );
