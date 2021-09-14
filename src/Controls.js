@@ -38,7 +38,6 @@ const Controls = ({ tracks, setIncall, setStart }) => {
     <Grid container spacing={2} alignItems="center">
       <Grid item>
         <Button
-          variant="contained"
           color={trackState.audio ? "primary" : "secondary"}
           onClick={() => toggle("audio")}
         >
@@ -47,7 +46,6 @@ const Controls = ({ tracks, setIncall, setStart }) => {
       </Grid>
       <Grid item>
         <Button
-          variant="contained"
           color={trackState.video ? "primary" : "secondary"}
           onClick={() => toggle("video")}
         >
@@ -55,7 +53,7 @@ const Controls = ({ tracks, setIncall, setStart }) => {
         </Button>
       </Grid>
       <Grid item>
-        <Button variant="contained" color="primary" onClick={() => leaveCall()}>
+        <Button color="secondary" onClick={() => leaveCall()}>
           {<ExitToApp />}
         </Button>
       </Grid>

@@ -9,13 +9,15 @@ function App() {
       {isVideoCall ? (
         <VideoCall setIncall={setIsVideoCall} />
       ) : (
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => setIsVideoCall(true)}
-        >
-          Join call
-        </Button>
+        <div className="welcome">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => setIsVideoCall(true)}
+          >
+            Join call
+          </Button>
+        </div>
       )}
     </div>
   );

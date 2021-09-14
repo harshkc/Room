@@ -10,11 +10,11 @@ const Video = ({ tracks, user }) => {
   }, [tracks, user]);
 
   return (
-    <Grid container style={{ height: "100%" }}>
+    <Grid id="agora-div" container style={{ height: "100%" }}>
       <Grid item xs={gridSpacing}>
         <AgoraVideoPlayer
-          style={{ height: "100", width: "100" }}
           videoTrack={tracks[1]}
+          style={{ height: "100", width: "100" }}
         />
       </Grid>
       {user.length > 0 &&
@@ -23,11 +23,11 @@ const Video = ({ tracks, user }) => {
             return (
               <Grid item xs={gridSpacing}>
                 <AgoraVideoPlayer
-                  key={user.uid}
                   style={{
                     height: "100",
                     width: "100",
                   }}
+                  key={user.uid}
                   videoTrack={user.videoTrack}
                 />
               </Grid>
